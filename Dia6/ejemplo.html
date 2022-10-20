@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo arrays</title>
+</head>
+
+<body>
+    <h1>Lista Series</h1>
+    <button type="button" onclick="mostrarSeries()">Ver series</button>
+    <button type="button" onclick="addSerie()">Añadir serie</button>
+    <button type="button" onclick="ordenarAZ()">Ordenar A-Z</button>
+    <button type="button" onclick="deshacerCambios()">Deshacer</button>
+
+    <hr>
+    <table border="1" id="tablaSeries">
+        <thead>
+            <th>Nombre serie</th>
+        </thead>
+    </table>
+    <script>
+        // var miPrimeraLista = [];
+        // var miSegundaLista = new Array();
+        // var miTerceraLista = [88,"hola",10];
+        // var miTerceraLista2 = ["hola",30,"agua"];
+        // var miCuartaLista = [];
+
+        var listaSeries = [];
+
+
+        function mostrarSeries() {
+            var tabla = document.getElementById("tablaSeries");
+            tabla.innerHTML = "";
+            tabla.innerHTML = `<thead><th>Nombre serie</th></thead>`;
+            listaSeries.forEach(serie => {
+                var fila = document.createElement("tr");
+                tabla.appendChild(fila);
+                var celda = document.createElement("td");
+                fila.appendChild(celda);
+                celda.innerHTML = `${serie}`;
+            });
+            console.log(listaSeries);
+        }
+
+        function addSerie() {
+            var nombreSerie = prompt("Inserte nombre de la serie");
+            listaSeries.push(nombreSerie);
+            mostrarSeries();
+        }
+
+        function ordenarAZ() {
+            listaOriginal = listaSeries.concat();
+            listaSeries.sort()
+            mostrarSeries();
+        }
+        function deshacerCambios() {
+            listaSeries = listaOriginal.concat();
+            mostrarSeries();
+        }
+
+    </script>
+</body>
+
+</html>

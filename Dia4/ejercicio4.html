@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <h1> USO DE STRINGS</h1>
+
+    <span>FRASE1: </span><input type="Text" id="frase1"><br />
+
+    <span>FRASE2: </span><textarea id="frase2"></textarea><br />
+
+    <input type="button" id="btn" value="boton 1" onclick="btn1()">
+    <input type="button" id="btn" value="boton 2" onclick="btn2()">
+    <input type="button" id="btn" value="boton 3" onclick="btn3()">
+    <input type="button" id="btn" value="boton 4" onclick="btn4()">
+
+    <script>
+        var frase1 = document.getElementById("frase1");
+        var frase2 = document.getElementById("frase2");
+        
+        // function btn1() {
+        //     if (frase1.length>20) {
+        //         console.log("TEXTO MUY GRANDE");
+        //     }
+        // }
+        
+        // function btn2() {
+        //     frase2.toLowerCase();
+        //     if (frase2 == "aprobado") {
+        //         console.log("Contiene la palabra aprobado")
+        //     } else {
+        //         console.log("No contiene la palabra aprobado");
+        //     }
+        // }
+
+        // function btn3() {
+        //     if (frase1.indexOf("ado") > 0) {
+                
+        //     }
+        // }
+
+        function btn4() {
+            let posicion = 0;
+            let contador = 0; //cuenta las veces que aparece la palabra aprobado
+            while (frase1.value.indexOf("aprobado",posicion) != -1) {
+                contador++;
+                posicion = frase1.value.indexOf("aprobado") +8;
+            }
+            console.log("El texto aprobado aparece " +contador + " veces ");
+        }
+
+
+    </script>
+</body>
+
+</html>

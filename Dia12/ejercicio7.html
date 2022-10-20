@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 7</h1>
+    <script>
+        window.onload = function () {
+        }
+
+        function calPotencia(n1,n2) {
+            if (isNaN(n1) || isNaN(n2)) {
+                return false;
+            }else{
+                if (n1 > 0 && n2 > 0 ) {
+                    return Math.pow(n1,n2);
+                }else {
+                    return false;
+                }
+            }
+        }
+        console.log(calPotencia(10,4));
+    </script>
+</body>
+
+</html>

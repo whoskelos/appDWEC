@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 1</title>
+</head>
+
+<body>
+
+    <script>
+        const equiposFutbol = ["Madrid", "Barcelona", "Betis", "Sociedad", "Sevilla"];
+
+        function pintarEquipo() {
+            equiposFutbol.forEach((valor,posicion,lista)=>{
+                if (posicion % 2 == 0) {
+                    document.body.innerHTML += `<p style="background-color:green;color:white">${valor}</p>`;
+                }else{
+                    document.body.innerHTML += `<p style="">${valor}</p>`;
+                }
+            });
+        }
+
+        pintarEquipo();
+        const listaPuntos = [200, 130, 302, 80];
+
+        // for (let i = 0; i < equiposFutbol.length; i++) {
+        //     console.log(equiposFutbol[i]);
+        // }
+
+        // let i = 0;
+        // while (i < equiposFutbol.length) {
+        //     console.log(equiposFutbol[i]);
+        //     i++;
+        // }
+
+        // let resultado = 0;
+        // for (let i = 0; i < listaPuntos.length; i++) {
+        //     resultado = listaPuntos[i] + resultado;
+        // }
+        // console.log(resultado);
+            // console.log(`La suma total es: ${calcularSuma(listaPuntos)}`);
+
+        // function calcularSuma(lista) {
+        //     let suma = 0;
+        //     for (let i = 0; i < lista.length; i++) {
+        //         if (lista[i] > 100) {
+        //             suma += lista[i];
+        //         }
+        //     }
+        //     return suma;
+        // }
+        
+        function mostrarDatos(dato) {
+            console.log(dato);
+        }
+
+        // var nuevaLista = listaPuntos.filter((x)=>{
+        //     return x > 100;
+        // });
+
+        var nuevaLista = listaPuntos.filter((x)=>x>100);
+
+        //console.log(nuevaLista);
+
+        //console.log(listaPuntos.sort((a,b)=> b-a)); // ordena de mayor a menor
+        //console.log(listaPuntos.sort((a,b)=> a-b)); // ordena de menor a mayor
+
+        // listaPuntos.forEach((x)=>console.log(x));
+
+    </script>
+</body>
+
+</html>

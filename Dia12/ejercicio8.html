@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <h1>Ejercicio 8</h1>
+    <div id="main">
+        Texto:
+        <input type="text" name="texto" id="cajaTexto">
+        <button type="button" id="btnComprobar" onclick="esPalindromo()">Comprobar</button>
+        <div id="respuesta"></div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var cajaTexto = document.getElementById("cajaTexto");
+            var btnComprobar = document.getElementById("btnComprobar");
+            // btnComprobar.addEventListener("click",comprobarCadena);
+        }
+
+        function esPalindromo() {
+            if (cajaTexto.value.length >= 3) {
+                let textoLimpio = cajaTexto.value.replace(/\s+/g, '');
+                let arrTexto = textoLimpio.split("");
+                let cadenaReversa = arrTexto.reverse().join("");
+                if (cadenaReversa.toLowerCase() === textoLimpio.toLowerCase()) {
+                    console.log("Es palíndromo");
+                }else{
+                    console.log("La cadena no es palíndromo");
+                }
+            }else{
+                console.log("Escriba una cadena mayor a 3 caracteres");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

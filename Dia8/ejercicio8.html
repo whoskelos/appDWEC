@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+    <script>
+        //crear una lista de nombres que tienes que ir añadiendo hasta un límite de 10 valores y dos botones para añadir al principio o al final
+        onload = () => {
+            var listaNombres = [];
+            var btnAddPrin = document.getElementById("addPrincipio");
+            var btnAddFinal = document.getElementById("addFinal");
+            var cajaRespuesta = document.getElementById("res");
+            btnAddFinal.addEventListener("click",addNombreFinal);
+            btnAddPrin.addEventListener("click",addNombrePrincipio);
+        }
+        function addNombrePrincipio() {
+            if (listaNombres.length < 10) {
+                let nombreNuevo = prompt("Escriba nombre nuevo");
+                listaNombres.unshift(nombreNuevo);
+                cajaRespuesta.innerHTML += `<p>Nombre añadido</p>`;
+            } else {
+                cajaRespuesta.innerHTML += `<p>Array Lleno</p>`;
+            }
+        }
+        function addNombreFinal() {
+            if (listaNombres.length < 10) {
+                let nombreNuevo = prompt("Escriba nombre nuevo");
+                listaNombres.push(nombreNuevo);
+            } else {
+                cajaRespuesta.innerHTML += `<p>Array Lleno</p>`;
+            }
+        }
+        // var nombreNuevo = prompt("Escriba nombre nuevo");
+
+
+    </script>
+    <style>
+        .botones {
+            padding: 10px;
+            background-color: beige;
+            color: rgb(255, 166, 0);
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            font-weight: bold;
+            background-color: orange;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+
+        }
+
+        .respuesta {
+            padding: 10px;
+            background-color: beige;
+            color: rgb(255, 166, 0);
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body style="font-family:sans-serif;">
+    <h1 style="text-align:center;">Lista nombres</h1>
+    <div class="botones">
+        <button class="btn" type="button" id="addPrincipio">Añadir al principio</button>
+        <button class="btn" type="button" id="addFinal">Añadir al final</button>
+    </div>
+    <hr>
+    <div class="respuesta" id="res"></div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="shortcut icon" href="">
+	<style>
+		th,
+		td {
+			border: 1px solid black;
+		}
+	</style>
+	<script>
+		var listaMusicalCompleta = new Array();
+
+		listaMusicalCompleta.push([1, "Eminen", 1000000]);
+		listaMusicalCompleta.push([2, "Vetusta Morla", 150000]);
+		listaMusicalCompleta.push([3, "ACDC", 2000000]);
+		listaMusicalCompleta.push([4, "Rosalia", 150000]);
+		listaMusicalCompleta.push([5, "Anthrax", 3000]);
+
+		window.onload = function () {
+			cargarTabla(listaMusicalCompleta);
+			var tabla = document.getElementById("tabla");
+		}
+
+		function cargarTabla(lista) {
+			if (tabla.getElementsByTagName("tbody")[0]) {
+				tabla.getElementsByTagName("tbody")[0].remove();
+			}
+			var listaElementosBorrar = tabla.getElementsByClassName("elementosTabla");
+			[...listaElementosBorrar].forEach(ele => ele.remove());
+			let texto = `<tbody>`;
+
+
+			lista.forEach(elemento => {
+				texto += `
+				<tr class="elementosTabla">
+					<td>${elemento[0]}</td>
+					<td>${elemento[1]}</td>
+					<td>${elemento[2]}</td>
+					</tr>`;
+			});
+			texto += `</tbody>`;
+			tabla.innerHTML += texto;
+		}
+		function ordenarPorPuesto() {
+			listaOrdenadaPuesto = listaMusicalCompleta.sort((a, b) => a[0] - b[0]);
+			cargarTabla(listaOrdenadaPuesto);
+		}
+		function ordenarPorNombre() {
+			let listaOrdenadaNombre = listaMusicalCompleta.sort((a, b) => {
+				if (a[1] > b[1]) {
+					return 1;
+				} else {
+					return -1;
+				}
+			});
+			cargarTabla(listaOrdenadaNombre);
+		}
+		function filtrar() {
+			var cajaTexto = document.getElementById("cajaTexto");
+			console.log(cajaTexto.value);
+			var listaFiltrada = listaMusicalCompleta.filter(elemento => elemento[1].toLowerCase() == cajaTexto.value.toLowerCase());
+			cargarTabla(listaFiltrada);
+		}
+	</script>
+</head>
+
+<body>
+	<table id="tabla">
+		<thead>
+			<tr>
+				<th><a href="javascript:ordenarPorPuesto()" id="lnkOrdenarPorPuesto">PUESTO</a></th>
+				<th><a href="javascript:ordenarPorNombre()" id="lnkOrdenarPorNombre">NOMBRE</a></th>
+				<th>DISCOS VENDIDOS</th>
+			</tr>
+		</thead>
+	</table>
+	<br>
+	<input type="text" id="cajaTexto"><button id="btnFiltrar" type="button" onclick="filtrar()">FILTRAR</button>
+</body>
+
+</html>

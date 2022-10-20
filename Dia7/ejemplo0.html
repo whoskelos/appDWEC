@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 0</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        header h1{
+            text-align: center;
+        }
+    </style>
+    <script>
+        var listaNumeros = [4,5,22,19,1];
+        var listaNumeros2 = listaNumeros.concat();
+
+        //metodo .reverse muestra el array en orden inverso al que se ha creado
+
+        console.log("Lista sin reverse",listaNumeros); //lista normal
+        console.log(listaNumeros.join("-"));
+        console.log("Lista con reverse",listaNumeros2.reverse()); //lista del reves
+        console.log(listaNumeros2.join("-"));
+
+        //ejemplo de ejecucion de .forEach
+        //listaNumeros.forEach(mostrarDato);
+        //expresion flecha
+        listaNumeros.forEach((dato)=>console.log(dato));
+
+        //funcion mostrar console que recibe un dato
+        function mostrarDato(dato) {
+            console.log(dato);
+        }
+
+        //ejemplo de .map()
+        listaNumero3 = listaNumeros2.map((num) => num*2);
+        console.log(listaNumero3);
+
+        //ejemplo de .reduce()
+        var sumaLista = listaNumeros.reduce((sumaLista,dato) => sumaLista+dato);
+        console.log(sumaLista);
+
+        //ejemplo de .filter()
+        var listaFiltrada = listaNumeros.filter((x) => x % 2 == 0);
+        console.log("Lista filtrada por pares:")
+        console.log(listaFiltrada);
+
+        //Ejercicio : utilizando mas de un método súmame todos los pares
+
+        var sumaPares = listaNumeros.filter((num) => num%2 == 0).reduce((sumaPares,num) => sumaPares+=num);
+        console.log("resultado suma pares => ",sumaPares);
+
+        //Ejercicio: Mostrar la lista ordenada alfabeticamente de aquellos superheroes que empiecen por vocal
+
+        var listaVocales = ["a","e","i","o","u"];
+        var listaComics = ["Batman","Aquaman","Lobezno","Superman","Mortadelo",""];
+
+        var lista2 = listaComics.filter(nombre =>
+        listaVocales.indexOf(nombre.substr(0,1).toLowerCase())!=-1);
+
+        console.log(lista2);
+
+        
+        
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Ejemplos de métodos arrays</h1>
+    </header>
+</body>
+</html>

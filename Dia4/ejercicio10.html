@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+
+<body>
+    <h1> USO DE STRINGS</h1>
+
+    <span>FRASE1: </span><input type="Text" id="frase1"><br />
+
+    <span>FRASE2: </span><textarea id="frase2"></textarea><br />
+
+    <input type="button" id="btn" value="boton 1" onclick="btn1()">
+    <input type="button" id="btn" value="boton 2" onclick="btn2()">
+    <input type="button" id="btn" value="boton 3" onclick="btn3()">
+    <input type="button" id="btn" value="boton 4" onclick="btn4()">
+    <input type="button" id="btn" value="boton 5" onclick="btn5()">
+    <input type="button" id="btn" value="boton 6" onclick="btn6()">
+    <input type="button" id="btn" value="boton 7" onclick="btn7()">
+    <input type="button" id="btn" value="boton 7" onclick="btn10()">
+
+    <script>
+        var frase1 = document.getElementById("frase1");
+        var frase2 = document.getElementById("frase2");
+
+        // function btn1() {
+        //     if (frase1.length>20) {
+        //         console.log("TEXTO MUY GRANDE");
+        //     }
+        // }
+
+        // function btn2() {
+        //     frase2.toLowerCase();
+        //     if (frase2 == "aprobado") {
+        //         console.log("Contiene la palabra aprobado")
+        //     } else {
+        //         console.log("No contiene la palabra aprobado");
+        //     }
+        // }
+
+        // function btn3() {
+        //     if (frase1.indexOf("ado") > 0) {
+
+        //     }
+        // }
+
+        // function btn4() {
+        //     let posicion = 0;
+        //     let contador = 0; //cuenta las veces que aparece la palabra aprobado
+        //     while (frase1.value.indexOf("aprobado",posicion) != -1) {
+        //         contador++;
+        //         posicion = frase1.value.indexOf("aprobado") +8;
+        //     }
+        //     console.log("El texto aprobado aparece " +contador + " veces ");
+        // }
+
+        // function btn5() {
+        //     let frase = prompt("Escriba una palabra");
+        //     if (frase.length > 5) {
+        //         console.log(frase.substring(4,7)); //cojo un trozo en las posiciones indicadas
+        //     }
+        // }
+
+        // function btn6() {
+        //     let frase = prompt("Escriba una palabra");
+        //     if (frase.length > 5) {
+        //         let posicion = frase.indexOf("XYZ");
+        //         if (posicion != -1 && frase.length > (posicion+8)) {
+        //             console.log(posicion.substr(posicion + 3, 5));
+        //         }
+        //     }
+        // }
+
+        // function btn7() {
+        //     let frase = prompt("Escriba una frase");
+        //     let nuevaFrase = frase.replace(/daw/g,"DAW");
+        //     console.log(nuevaFrase);
+        // }
+
+        function btn10() {
+            let frase = prompt("Escriba una frase");
+            let texto = "";
+            for (let i = 0; i < frase.length; i++) {
+                texto += frase.charAt(i) + " \n ";
+            }
+            console.log(texto);
+        }
+
+
+    </script>
+</body>
+
+</html>

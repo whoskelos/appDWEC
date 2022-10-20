@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio8</title>
+</head>
+
+<body>
+    <h1>Ejercicio8</h1>
+    <script>
+        var fila = prompt("Introduzca numero de filas");
+        var columna = prompt("Introduzca numero de columnas");
+
+        document.write("<table border=1;>")
+        for (let i = 1; i <= fila; i++) {
+            document.write("<tr>");
+            for (let j = 1; j <= columna; j++) {
+                if((i+j)%2==0){
+                    document.write("<td style='background-color:black;color:white;font-size:25px'>" + j + "</td>");
+                }else{
+                document.write("<td style='font-size:25px'>" + j + "</td>");}
+            }
+
+            document.write("</tr>");   
+        }
+        document.write("</table>")
+    </script>
+</body>
+
+</html>

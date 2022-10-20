@@ -1,0 +1,27 @@
+
+
+1. Crear el directorio /home/alumnotd/appDWEC y dar permisos de lectura a todo el mundo tanto el directorio como a los archivos que tiene dentro
+
+mkdir /home/alumnotd/appDWEC
+
+chmod -R 777 /home/alumnotd/appDWEC
+
+2. Copiamos nuestro código (html/css/jss) en el directorio anterior.
+
+3. Lanzamos el contenedor ejecutando la siguiente línea:
+
+SI QUEREMOS SOLO SERVIDOR WEB
+
+docker run --name miservidor -d -p 8080:80 -v /home/alumnotd/appDWEC:/usr/share/nginx/html nginx
+
+SI QUEREMOS ADEMAS PHP
+
+docker run --name miservidor -d -p 8080:80 -v /home/alumnotd/appDWEC:/var/www/html php:7.0-apache
+
+4. Abrimos el navegador con la dirección localhost:8080
+
+Para parar el contenedor:  docker stop miservidor
+
+Para arrancar un contenedor parado: docker start miservidor
+
+Para eliminar el contenedor: docker rm miservidor

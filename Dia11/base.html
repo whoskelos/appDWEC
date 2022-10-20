@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="">
+    <title>Calculadora JS</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1> USO DE STRINGS</h1>
+    </header>
+    <main id="contenedor">
+        <span>OPERADOR 1: </span><input type="Text" id="operador1"><br />
+        <span>OPERADOR 2: </span><textarea id="operador2"></textarea><br />
+        <span>RESULTADO: </span><input type="Text" id="resultado"><br />
+        <input type="button" value="+" id="btnSumar" onclick="operar(this.value)">
+        <input type="button" value="-" id="btnSumar" onclick="operar(this.value)">
+        <input type="button" value="*" id="btnSumar" onclick="operar(this.value)">
+        <input type="button" value="/" id="btnSumar" onclick="operar(this.value)">
+        <div id="respuesta"></div>
+    </main>
+
+    <script>
+        var btnSumar = document.getElementById("btnSumar");
+        var divRespuesta = document.getElementById("respuesta");
+        // btnSumar.addEventListener("click", sumar);
+
+        function operar(oper) {
+            let cajaUno = document.getElementById("operador1");
+            let cajaDos = document.getElementById("operador2");
+            let cajaResultado = document.getElementById("resultado");
+            if (isNaN(cajaUno.value) || isNaN(cajaDos.value)) {
+                divRespuesta.innerHTML = `<p style="color:red">Valores introducidos no válidos</p>`;
+            } else {
+                cajaUno = parseFloat(cajaUno.value);
+                cajaDos = parseFloat(cajaDos.value);
+                switch (oper) {
+                    case "+":
+                        cajaResultado.value = cajaUno + cajaDos;
+                        break;
+                    case "-":
+                        cajaResultado.value = cajaUno - cajaDos;
+                        break;
+                    case "*":
+                        cajaResultado.value = cajaUno * cajaDos;
+                        break;
+                    case "/":
+                        cajaResultado.value = cajaUno / cajaDos;
+                        break;
+                    default:
+                        divRespuesta.innerHTML = `<p style="color:red">Operación no válida</p>`;
+                        break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

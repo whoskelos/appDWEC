@@ -1,0 +1,30 @@
+Ejercicio4: solicitar un color al usuario y escribir una capa de 200x200 con ese color 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var color=prompt("Elija un color");
+
+        if(color=="azul"){
+            var color = "blue";
+        }else if(color=="verde"){
+            var color = "green";
+        }else if(color=="amarillo"){
+            var color = "yellow";
+        }else if(color=="negro"){
+            var color = "black";
+        }else if(color=="rojo"){
+            var color = "red";
+        }
+        window.document.body.innerHTML = `<div style="background-color:${color};width:200px;height:200px";>${color}</div>`;
+    </script>
+    
+</body>
+</html>
