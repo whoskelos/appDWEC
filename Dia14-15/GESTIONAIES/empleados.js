@@ -136,8 +136,8 @@ function eliminar() {
     for (let i = 0; i < empSeleccionados.length; i++) {
         if (empSeleccionados[i].checked) {
             var indexEmp = listaEmpleados.findIndex(emp => emp.id_empleado == empSeleccionados[i].id)
+            listaEmpleados.splice(indexEmp,1);
         }
     }
-    listaEmpleados.splice(indexEmp,1);
     mostrarEmpleados(listaEmpleados);
 }
