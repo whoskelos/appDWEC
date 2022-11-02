@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ejercicio 4</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        .divCentral {
+            padding: 20px;
+            width: 300px;
+            background: #162433;
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            z-index: 1;
+        }
+        #btnCerrar {
+            cursor: pointer;
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = () => {
+            //número de imagenes que están dentro de un párrafo
+            console.log(document.querySelectorAll("p > img").length)
+            //numero de opciones que tiene el tercer desplegable
+            console.log(document.querySelectorAll("select")[2].querySelectorAll("option").length);
+            //numero de parrafos que tengan la clase ejercicio4
+            console.log(document.querySelectorAll("p.ejercicio4").length);
+            //numero de celdas de la tabla segunda
+            console.log(document.querySelectorAll("table")[1].querySelectorAll("td").length);
+            //numeros de caja de texto
+            console.log(document.querySelectorAll("input[type='text']").length);
+            //Propiedad value del elemento con nombre caja1
+            console.log(document.getElementsByName("caja1")[0].value);
+
+            function borrarElemento(etiqueta, numero) {
+                //comprobamos si existe el elemento en esa posicion
+                if (document.getElementsByTagName(etiqueta.length >= numero)) {
+                    document.getElementsByTagName(etiqueta)[numero - 1].remove();
+                } else {
+                    console.log("No hay una etiqueta en esa posicion");
+                }
+            }
+
+            //Al pulsar el botón AÑADIR si en la caja de texto URL  hay una URL válida debe crear un div de 200x200 en la capa con id "publicidad" con una imagen con esa URL.
+
+            document.getElementById("anadir").addEventListener("click", () => {
+                let cajaUrl = document.getElementsByTagName("input")[0];
+                let divPubli = document.getElementById("publicidad");
+                let divImagen = document.createElement("div");
+                divPubli.appendChild(divImagen);
+                divImagen.style.width = "200px";
+                divImagen.style.height = "200px";
+                divImagen.style.border = "2px solid red";
+                if (cajaUrl.value != "") {
+                    divImagen.innerHTML = `
+                        <img id="imgPubli" src="${cajaUrl.value}" width="200"></img>`;
+                }
+            });
+
+            document.getElementById("cambiar").addEventListener("click", () => {
+                let nuevaUrl = document.getElementsByTagName("input")[0];
+                if (document.getElementById("imgPubli")) {
+                    let imagenPubli = document.getElementById("imgPubli");
+                    imagenPubli.setAttribute("src", nuevaUrl.value);
+                } else {
+                    nuevaUrl.style.border = "2px solid red";
+                    alert("Añada una imagen primero");
+                }
+            });
+
+
+            //Crea una función que añade una capa de 300x300 con una imagen y un enlace con el texto Cerrar. La capa se mostrará en el centro de la pantalla y si se pulsa el enlace se debe ocultar la capa. La función se ejecutará al pulsar boton1
+            document.getElementsByTagName("button")[2].addEventListener("click",abrirDiv);
+
+            function abrirDiv() {
+                let nuevoDiv = document.createElement("div");
+                document.body.appendChild(nuevoDiv);
+                nuevoDiv.className = "divCentral";
+                nuevoDiv.innerHTML = `
+                <p id="btnCerrar" style="color:white;">X</p>
+                <img id="imgPubli" src="https://mediapool.bmwgroup.com/cache/P9/202205/P90463301/P90463301-the-bmw-m4-50-jahre-bmw-m-edition-05-2022-2002px.jpg" width="200"></img>`;
+
+                document.getElementById("btnCerrar").addEventListener("click",()=>{
+                    nuevoDiv.remove();
+                })
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="publicidad"></div>
+    <form>
+        <fieldset>
+            URL<input type="text"> <button type="button" id="anadir">AÑADIR</button>
+            <button type=button id="cambiar">CAMBIAR</button>
+        </fieldset>
+    </form>
+    <form>
+        <fieldset>
+            <button type=button>BOTON 1</button>
+            <button type=button>BOTON 2</button>
+        </fieldset>
+    </form>
+
+    <p class=ejercicio4 id=parrafo1>Parrafo 1</p>
+    <select>
+        <option>Valor1</option>
+        <option>Valor2</option>
+        <option>Valor3</option>
+        <option>Valor4</option>
+    </select>
+    <table style="border: 2px black solid">
+        <tr>
+            <td>Celda 1 tabla 1</td>
+        </tr>
+    </table><br>
+    <table style=" border: 2px black solid">
+        <tr>
+            <td>Celda 1 tabla 2</td>
+            <td>Celda 2 tabla 2</td>
+        </tr>
+    </table><br>
+    <table style="border: 2px black solid">
+        <tr>
+            <td>Celda 1 tabla 3</td>
+        </tr>
+    </table><br>
+    <table style=" border: 2px black solid">
+        <tr>
+            <td>Celda 1 tabla 4</td>
+        </tr>
+    </table><br>
+    <table style="border: 2px black solid">
+        <tr>
+            <td>Celda 1 tabla 5</td>
+        </tr>
+    </table><br>
+    <select>
+        <option>Valor1</option>
+        <option>Valor2</option>
+        <option>Valor3</option>
+    </select>
+    <img src=" foto1.jpg" width=100 height=100>
+    <img src="foto1.jpg" width=100 height=100>
+    <img src="foto1.jpg" width=100 height=100>
+    <select>
+        <option>Valor1</option>
+        <option>Valor2</option>
+        <option>Valor3</option>
+    </select>
+    <p>Parrafo 2</p>
+    <p>Parrafo<img src="foto1.jpg" width=100 height=100> 3</p>
+    <p class=ejercicio4>Parrafo 4</p>
+    <p>Parrafo 5</p>
+    Caja 1<input type=text value=HOLA name=caja1>Radio 1 <input type=radio>Checkbox 1 <input type=checkbox><br>
+    Caja 2<input type=text>Radio 2 <input type=radio><input type=button><br>
+    Caja 3<input type=text>Radio 3 <input type=radio><br>
+    <select>
+        <option>Valor1</option>
+        <option>Valor2</option>
+    </select>
+    <div style="width:100;height:100">CAPA 1</div>
+    <div style="width:100;height:100">CAPA 2</div>
+    <div style="width:100;height:100">CAPA 3</div>
+    <div style="width:100;height:100">CAPA 4</div>
+    <div style="width:100;height:100">CAPA 5</div>
+
+</body>
+
+</html>

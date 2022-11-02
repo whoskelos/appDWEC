@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <script>
+        onload = () => {
+            //una vez cargada la página después de 3 segundos se oculta
+            //setInterval(ocultarMostrar(),3000);
+            intervalo = setInterval(decrementar,1000);
+        }
+
+        //cada x segundos se oculta una imagen y luego la otra
+        var posicion = 0;
+        function ocultarMostrar(){
+            document.getElementsByTagName("img")[posicion].style.display = "none";
+            if (posicion == 0) posicion = 1;
+            else posicion = 0;
+            document.getElementsByTagName("img")[posicion].style.display = "block";
+        }
+        var contador = 10;
+        function decrementar() {
+            let divContador = document.getElementById("contador");
+            divContador.innerHTML = contador;
+            contador--;
+            if (contador == 0){
+                clearInterval(intervalo);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <img src="https://mediapool.bmwgroup.com/cache/P9/202205/P90463301/P90463301-the-bmw-m4-50-jahre-bmw-m-edition-05-2022-2002px.jpg" alt="" width="400">
+    <img src="https://d1eip2zddc2vdv.cloudfront.net/dphotos/750x400/13567723-1604414528.jpg" alt="" width="400">
+    <div id="contador"></div>
+</body>
+</html>

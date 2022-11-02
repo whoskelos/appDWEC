@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de ejemplo intervalo</title>
+    <style>
+        #divPadre{
+            border: 2px solid blue;
+            display: flex;
+        }
+        .divHijo{
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        onload = () => {
+            intervalo = setInterval(pintarDiv,1000);
+        }
+        var posicion = 0;
+        function pintarDiv() {
+            let divs = document.getElementsByClassName("divHijo");
+            arrDivs = [... divs];
+            arrDivs[posicion].style.backgroundColor = "red";
+            posicion++;
+            if (posicion == 10) {
+                clearInterval(intervalo);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="divPadre">
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+        <div class="divHijo"></div>
+    </div>
+</body>
+</html>
