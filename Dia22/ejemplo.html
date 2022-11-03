@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Cookie</title>
+</head>
+<body>
+    <h1>Ejemplo cookie</h1>
+    <h3>Idioma</h3>
+    <select name="idiomas" id="idiomas">
+        <option>Español</option>
+        <option>Ingles</option>
+        <option>Francés</option>
+    </select>
+    <button type="button" id="btnGuardar">Guardar Idioma</button>
+    <br>
+    <p>Nombre:<input type="text" name="txtNombre" id="txtNombre"></p>
+    <p>Nota:<input type="text" name="txtNota" id="txtNota"></p>
+    <button type="button" id="btnAddNota">Añadir nota</button>
+    <script>
+        var listaNotas = document.cookie
+        onload = () => {
+            cargarIdioma();
+        }
+        document.getElementById("btnGuardar").addEventListener("click",guardarIdioma);
+        function guardarIdioma() {
+            let idioma = document.getElementById("idiomas");
+            document.cookie = `idioma=${idioma.value}`;
+            console.log(idioma.value);
+        }
+        function cargarIdioma() {
+            let listaCookies = document.cookie.split(";");
+            listaCookies.forEach(cookie => {
+                if (cookie.split("=")[0] == "idioma") {
+                    document.getElementById("idiomas").value = cookie.split("=")[1];
+                }
+            }); 
+            
+        }
+    </script>
+</body>
+</html>
