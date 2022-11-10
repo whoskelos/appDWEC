@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM</title>
+<script>
+var listaJugadores=[];
+
+listaJugadores.push({nombre:"MESSI",goles:20});
+listaJugadores.push({nombre:"BALE",goles:5});
+listaJugadores.push({nombre:"GRIEZMAN",goles:10});
+listaJugadores.push({nombre:"RODRIGO",goles:7});
+listaJugadores.push({nombre:"YAGO ASPAS",goles:12});
+
+window.onload= function(){
+cargarTabla();
+}
+
+function cargarTabla(){
+var tabla=document.getElementsByTagName("table")[0];
+for(i=0;i<listaJugadores.length;i++){
+var fila=document.createElement("tr");
+tabla.appendChild(fila);
+
+var celda=document.createElement("td");
+fila.appendChild(celda);
+celda.appendChild(document.createTextNode(listaJugadores[i].nombre));
+
+celda=document.createElement("td");
+fila.appendChild(celda);
+celda.appendChild(document.createTextNode(listaJugadores[i].goles));
+
+celda=document.createElement("td");
+fila.appendChild(celda);
+
+var boton=document.createElement("button");
+
+boton.nombreJugador=listaJugadores[i].nombre;
+
+boton.addEventListener("click",verNombre);
+
+
+boton.appendChild(document.createTextNode("NOMBRE"));
+celda.appendChild(boton);
+}
+}
+
+function verNombre(){
+alert(event.target.nombreJugador);
+}
+
+</script>
+</head>
+<body>
+<table>
+<tr><th>JUGADOR</th><th>GOLES</th><th>ACCION</th></tr>
+</table>
+</body>
+</html>

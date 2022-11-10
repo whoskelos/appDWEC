@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var listaNotas;
+        let valorListaNotas = recuperarCookie("listaNotas");
+        if (valorListaNotas) {
+            listaNotas = JSON.parse(valorListaNotas);
+        } else {
+            listaNotas = [];
+        }
+
+        function recuperarCookie(nombre) {
+            let listaCookies = document.cookie.split(";");
+            listaCookies.forEach(c => {
+                if (c.split("=")[0] == nombre) {
+                    return c.split("=")[1];
+                }
+            })
+        }
+
+        function verNotas() {
+            let contenedor = document.getElementById("notas");
+            listaNotas.forEach(nota => {
+                let parrafo = document.createElement("p");
+                parrafo.innerHTML = `Nombre: ${nota.nombre} Nota: ${nota.nota}`;
+                contenedor.appendChild(parrafo);
+            })
+        }
+        onload = () => {
+            document.getElementById("guardarIdioma")
+                .addEventListener("click", guardarIdioma);
+            document.getElementById("anadirNota")
+                .addEventListener("click", anadirNota);
+            document.getElementById("verNotas")
+                .addEventListener("click", verNotas);
+            cargarIdioma();
+        }
+
+        function cargarIdioma() {
+            let idioma = recuperarCookie("idioma");
+            if (idioma) {
+                document.getElementById("idioma").value = idioma;
+            }
+        }
+
+        function guardarIdioma() {
+            let idioma = document.getElementById("idioma").value;
+            document.cookie = `idioma=${idioma}`;
+        }
+
+        function anadirNota() {
+            let nombre = document.getElementById("nombre").value;
+            let nota = document.getElementById("nota").value;
+
+            listaNotas.push({
+                "nombre": nombre,
+                "nota": nota
+            });
+            document.cookie = `listaNotas=${JSON.stringify(listaNotas)}`;
+        }
+    </script>
+</head>
+
+<body>
+    <span>IDIOMA:</span><select id="idioma">
+        <option>Castellano</option>
+        <option>Ingles</option>
+        <option>Frances</option>
+    </select>
+    <button type="button" id="guardarIdioma">Guardar Idioma</button><br>
+    <span>NOMBRE:</span><input type="text" id="nombre"><br>
+    <span>NOTA:</span><input type="text" id="nota"><br>
+    <button type="button" id="anadirNota">Añadir Nota</button><br>
+    <button type="button" id="verNotas">Ver Notas</button><br>
+    <div id="notas">
+
+    </div>
+</body>
+
+</html>

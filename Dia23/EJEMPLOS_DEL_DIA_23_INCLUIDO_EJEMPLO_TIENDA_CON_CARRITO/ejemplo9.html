@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM</title>
+<style>
+.claseParrafo {color:red;}
+</style>
+<script>
+function crearAtributo(){
+atributo = document.createAttribute('class');
+atributo.nodeValue = 'claseParrafo';
+document.getElementById('parrafo').attributes.setNamedItem(atributo);
+}
+function verAtributos(){
+var i;
+var respuesta = '';
+var atributos = document.getElementById('parrafo').attributes;
+for (i=0;i<atributos.length;i++){
+respuesta += atributos[i].name + '=' + atributos[i].value + '\n';
+}
+alert(respuesta);
+}
+</script>
+</head>
+<body>
+<p id='parrafo'>El estilo de este p&aacute;rrafo est&aacute; controlado por los botones.</p>
+<button type='button' onclick='crearAtributo();'>Cambiar clase</button>
+<button type='button' onclick='verAtributos();'>Ver todos los atributos</button>
+</body>
+</html>

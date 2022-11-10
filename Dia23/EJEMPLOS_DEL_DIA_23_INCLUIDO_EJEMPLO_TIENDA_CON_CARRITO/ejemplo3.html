@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM</title>
+<style>
+table {
+border: 1px solid black;
+}
+</style>
+<script>
+var nodeListMuerto;
+var nodeListVivo;
+function actualizarNodeList() {
+nodeListMuerto = document.querySelectorAll('table');
+nodeListVivo = document.getElementsByTagName('table');
+}
+
+function clonarTabla() {
+var tabla = document.getElementsByTagName('table')[0];
+tabla.insertAdjacentHTML('afterend', tabla.outerHTML);
+}
+
+function cambiarFondo() {
+nodeListMuerto[0].getElementsByClassName('encabezado')[0].style.background = 'red';
+}
+
+function eliminarTablasClonadas() {
+while (document.getElementsByTagName('table').length > 1) {
+document.body.removeChild(document.getElementsByTagName('table')[1]);
+}
+}
+
+function contarTablas() {
+var mensaje = 'Seg\u00fan el nodeList vivo hay ' + nodeListVivo.length + ' tablas.';
+mensaje += '\nSeg\u00fan el nodeList muerto hay ' + nodeListMuerto.length + ' tablas.';
+alert(mensaje);
+}
+window.onload=function(){
+  actualizarNodeList();
+}
+</script>
+</head>
+<body>
+<button type='button' onclick='clonarTabla()'>Clonar tabla</button>
+<button type='button' onclick='cambiarFondo()'>Cambiar fondo encabezado tabla 1</button>
+<button type='button' onclick='eliminarTablasClonadas()'>Eliminar todas las tablas clonadas</button>
+<button type='button' onclick='contarTablas()'>Contar tablas</button>
+<table>
+<tr class='encabezado'>
+<td>Encabezado tabla</td>
+</tr>
+<tr class='cuerpo'>
+<td>Cuerpo tabla</td>
+</tr>
+</table>
+</body>
+</html>

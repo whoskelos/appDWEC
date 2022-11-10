@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM</title>
+<style>
+.claseParrafo {color:red;}
+.claseBorder {border: 2px solid green;}
+</style>
+<script>
+function cambiarClase(){
+if (document.getElementById('parrafo').hasAttribute('class')) {
+var x = document.getElementById('parrafo').getAttribute('class');
+if (x.indexOf('claseParrafo')!=-1) {
+document.getElementById('parrafo').setAttribute('class','claseBorder');
+} else {
+document.getElementById('parrafo').setAttribute('class','claseParrafo');
+}
+}
+}
+
+function leerClase(){
+if(document.getElementById('parrafo').hasAttribute('class')){
+alert(document.getElementById('parrafo').getAttribute('class'));
+}else{
+alert('No tiene clase');
+}
+}
+function crearClase(){
+document.getElementById('parrafo').setAttribute('class','claseParrafo');
+}
+</script>
+
+</head>
+<body>
+<p id='parrafo'>El estilo de este p&aacute;rrafo est&aacute; controlado por los botones.</p>
+<button type='button' onclick='crearClase();'>Crear clase</button>
+<button type='button' onclick='leerClase();'>Leer clase</button>
+<button type='button' onclick='cambiarClase();'>Cambiar clase</button>
+</body>
+</html>
