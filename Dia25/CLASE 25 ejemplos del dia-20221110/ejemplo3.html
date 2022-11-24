@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function mostrar(texto) {
+            alert(texto);
+        }
+        window.onload = function() {
+                var texto = "Paso 1";
+                document.getElementById("boton1").addEventListener("click", () => mostrar(texto));
+                texto = "Paso 2";
+                document.getElementById("boton2").addEventListener("click", () => mostrar(texto));
+                texto = "Paso 3";
+                document.getElementById("boton3").addEventListener("click", () => mostrar(texto));
+            }
+            /*
+function mostrar(texto) {
+  alert(texto);
+}
+window.onload=function(){
+   var texto="Paso 1";
+   document.getElementById("boton1").addEventListener("click",function(dato) { 
+														return () =>mostrar(dato)
+														}
+													  }(texto));
+   document.getElementById("boton2").dato="Paso 2";
+   document.getElementById("boton2").addEventListener("click",function(event) {mostrar(event.target.dato)});
+   document.getElementById("boton3").dato="Paso 3";
+   document.getElementById("boton3").addEventListener("click",function() {mostrar(this.dato)});
+}*/
+    </script>
+</head>
+
+<body>
+    <button id="boton1">BOTON 1</button>
+    <button id="boton2">BOTON 2</button>
+    <button id="boton3">BOTON 3</button>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>HTML5</title>
+
+    <script>
+        function cambiarMin(caja) {
+
+            document.getElementById(caja).value = document.getElementById(caja).value.toLowerCase();
+
+        }
+
+        function cambiarMay(caja) {
+
+            document.getElementById(caja).value = document.getElementById(caja).value.toUpperCase();
+
+        }
+
+        function noVocales(event) {
+
+            var key;
+
+            if (typeof(event.charCode) == 'undefined') {
+
+                key = event.which;
+
+            } else {
+
+                key = event.charCode;
+
+            }
+
+            if (/^[aeiouAEIOU]$/.test(String.fromCharCode(key))) event.preventDefault();
+
+        }
+
+        function noNumeros() {
+
+            var key;
+
+            if (typeof(event.charCode) == 'undefined') {
+
+                key = event.which;
+
+            } else {
+
+                key = event.charCode;
+
+            }
+
+            if (/^[0-9]$/.test(String.fromCharCode(key))) return false;
+
+            else return true;
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    Caja 1<input type="text" id="caja1" onblur="cambiarMin('caja2');" onkeypress="noVocales()"><br> Caja 2<input type="text" id="caja2" onkeypress="return noNumeros();" onfocus="cambiarMay('caja3')"><br> Caja 3<input type="text" id="caja3"><br>
+
+</body>
+
+</html>

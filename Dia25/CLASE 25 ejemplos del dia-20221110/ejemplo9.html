@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script>
+        var persona1 = {
+
+            name: 'Angelina',
+
+            lastName: 'Jolie',
+
+            birthDay: '04/06/1975',
+
+            lastMovie: 'The Tourist'
+
+        };
+
+        var persona2 = {
+
+            name: 'Scarlett',
+
+            lastName: 'Johansson',
+
+            birthDay: '22/11/1984',
+
+            lastMovie: 'We bought a Zoo'
+
+        }
+
+
+        var printName = function() {
+
+            console.log(this.name + ' ' + this.lastName);
+
+        }
+
+
+        printName(); //undefined
+
+        printName.call(persona1);
+
+        printName.call(persona2);
+
+        printName.apply(persona1);
+
+        printName.apply(persona2);
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script>
+        var myApp = {
+
+            name: 'Megan',
+
+            lastName: 'Fox',
+
+            birthDate: '16/05/1986',
+
+            isPretty: true
+
+        };
+
+        console.log(myApp.name); // Megan
+
+        console.log(myApp.isPretty); // true
+
+        var myApp2 = {
+
+            name: 'Megan',
+
+            lastName: 'Fox',
+
+            completeName: this.name + this.lastName
+
+        }
+
+        console.log(myApp.completeName); // undefined
+
+
+        var myApp3 = {
+
+            name: 'Megan',
+
+            lastName: 'Fox',
+
+            completeName: function() {
+
+                return this.name + ' ' + this.lastName;
+
+            }
+
+        }
+
+
+        console.log(myApp3.completeName()); // Megan Fox
+
+
+        var name = "Strange World";
+
+        function myApp4() {
+
+            var name = "World"
+
+            var sayHello = function() {
+
+                console.log('Hello, ' + this.name);
+
+            };
+
+            sayHello();
+
+        };
+
+
+        myApp4(); // Hello, Strange World
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

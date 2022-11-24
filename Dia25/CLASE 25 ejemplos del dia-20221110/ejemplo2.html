@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function mostrar1(evento) {
+            alert("Paso 1");
+        }
+
+        function mostrar2(evento) {
+            alert("Paso 2");
+            evento.stopPropagation();
+        }
+
+        function mostrar3(evento) {
+            alert("Paso 3");
+        }
+        window.onload = function() {
+            document.getElementById("capaPadre").addEventListener("click", function(event) {
+                mostrar3(event);
+            }, true);
+            document.getElementById("capaHija").addEventListener("click", function(event) {
+                mostrar2(event);
+            }, true);
+            document.getElementById("caja1").addEventListener("click", function(event) {
+                mostrar1(event);
+            }, true);
+        }
+    </script>
+</head>
+
+<body>
+    <DIV id="capaPadre" style="border:2px solid black">CONTENIDO DE LA CAPA PADRE</br>
+        <DIV id="capaHija" style="border:2px solid black">CONTENIDO DE LA CAPA HIJA</br>
+            <input type="text" id="caja1"><br>
+        </div>
+    </div>
+</body>
+
+</html>

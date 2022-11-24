@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>DOM</title>
+
+    <style>
+
+    </style>
+
+    <script>
+        function imprimirEvento(event) {
+
+            var mensaje = event.type + ' - ' + event.target.id + ' - ' + event.relatedTarget;
+
+            console.log(mensaje);
+
+        }
+
+        function asignarEventos() {
+
+            if (document.readyState == 'complete') {
+
+                var i;
+
+                var campos = document.querySelectorAll('input');
+
+                for (i = 0; i < campos.length; i++) {
+
+                    campos[i].addEventListener('focus', imprimirEvento);
+
+                    campos[i].addEventListener('focusin', imprimirEvento);
+
+                    campos[i].addEventListener('blur', imprimirEvento);
+
+                    campos[i].addEventListener('focusout', imprimirEvento);
+
+                }
+
+            }
+
+        }
+
+        document.addEventListener('readystatechange', asignarEventos, false);
+    </script>
+
+</head>
+
+<body>
+
+    <label for='campo1'>Campo 1:</label>
+
+    <input id='campo1' type='text' />
+
+    <br />
+
+    <label for='campo2'>Campo 2:</label>
+
+    <input id='campo2' type='text' />
+
+</body>
+
+</html>

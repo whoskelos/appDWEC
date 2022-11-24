@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>HTML5</title>
+
+    <style>
+        td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+    <script>
+        var tabla;
+
+        document.addEventListener('readystatechange', comprobarEstado, true);
+
+        function comprobarEstado() {
+
+            if (document.readyState == 'interactive') {
+
+                crearTabla();
+
+                asignarOyenteEvento();
+
+            }
+
+        }
+
+        function crearTabla() {
+
+            tabla = document.createElement('table');
+
+            var cuerpoTabla = document.createElement('tbody');
+
+            var celda = document.createElement('td');
+
+            celda.appendChild(document.createTextNode(''));
+
+            var fila = document.createElement('tr');
+
+            var i;
+
+            for (i = 0; i < 5; i++) {
+
+                fila.appendChild(celda.cloneNode(true));
+
+            }
+
+            for (i = 0; i < 5; i++) {
+
+                cuerpoTabla.appendChild(fila.cloneNode(true));
+
+            }
+
+            tabla.appendChild(cuerpoTabla);
+
+            document.body.appendChild(tabla);
+
+        }
+
+        function asignarOyenteEvento() {
+
+            tabla.addEventListener('click', cambiarFondo, true);
+
+        }
+
+        function cambiarFondo(event) {
+
+            if (event.target.nodeName == 'TD') {
+
+                if (event.target.style.backgroundColor != 'red') {
+
+                    event.target.style.backgroundColor = 'red';
+
+                } else {
+
+                    event.target.style.backgroundColor = '';
+
+                }
+
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

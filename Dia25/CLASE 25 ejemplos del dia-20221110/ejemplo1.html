@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function mostrar(evento) {
+            alert("Evento generado en " + evento.target.id + " - ahora esta en " + evento.currentTarget.id);
+        }
+        window.onload = function() {
+            document.getElementById("capaPadre").addEventListener("click", function(event) {
+                mostrar(event);
+            }, true);
+            document.getElementById("capaHija").addEventListener("click", function(event) {
+                mostrar(event);
+            }, true);
+            document.getElementById("caja1").addEventListener("click", function(event) {
+                mostrar(event);
+            }, true);
+        }
+    </script>
+</head>
+
+<body>
+    <DIV id="capaPadre" style="border:2px solid black">CONTENIDO DE LA CAPA PADRE</br>
+        <DIV id="capaHija" style="border:2px solid black">CONTENIDO DE LA CAPA HIJA</br>
+            <input type="text" id="caja1"><br>
+        </div>
+    </div>
+</body>
+
+</html>
