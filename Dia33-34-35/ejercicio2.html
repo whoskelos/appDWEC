@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery</title>
+    <style>
+        div {
+            float: left;
+        }
+
+        div.red {
+            background: red;
+        }
+
+        div.yellow {
+            background: yellow;
+        }
+
+        div.oculta {
+            display: none;
+        }
+    </style>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script>
+    //EJERCICIO 2:  Modifica el siguiente  código añadiendo un botón para que oculte todas las
+    //capas visibles y otro botón para que oculte todas las capas con color de fondo rojo:
+    $(document).ready(function () {
+        const btn1 = document.createElement("button");
+        btn1.id = "btnOcultarVisibles";
+        btn1.innerHTML = "Ocultar visibles";
+        $("body").append(btn1);
+        $("#btnOcultarVisibles").click(()=>{
+            $(".visible").hide();
+        });
+
+        //ocultar botones fondo rojo
+        const btn2 = document.createElement("button");
+        btn2.id = "btnOcultarRojos";
+        btn2.innerHTML = "Ocultar rojos";
+        $("body").append(btn2);
+        $("#btnOcultarRojos").click(()=>{
+            $(".red").hide();
+        });
+    });
+
+    </script>
+</head>
+
+<body>
+    <div class='visible red'>Visible</div>
+    <div class='visible yellow'>Visible</div>
+    <div class='oculta yellow'>Oculta</div>
+    <div class='visible red'>Visible</div>
+    <div style='clear: both'></div>
+    <button onclick='$("div:hidden").show();'>Mostrar ocultos</button>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 15</title>
+    <script src="/jquery-ui/jquery.min.js"></script>
+    <script>
+        // EJERCICIO 15:  Crea una función que cree un párrafo con el texto “EJERCICIO 15” y lo inserte antes de la capa con identificador “capa15”.
+        $(document).ready(function () {
+            crerParrafo();
+        });
+        function crerParrafo() {
+            //selecciono el div y le inserto antes
+            $("#capa15").before("<p>EJERCICIO 15</p>");
+        }
+    </script>
+</head>
+<body>
+    <h1>Jquery</h1>
+    <div id="capa15">Hola mundo</div>
+</body>
+</html>
