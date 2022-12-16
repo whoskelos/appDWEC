@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejemplo 1</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .contenedor {
+            display: flex;
+            width: 700px;
+            height: 100px;
+        }
+
+        .select1 {
+            padding: 10px;
+        }
+        .select2 {
+            padding: 10px;
+        }
+        .respuesta {
+            padding: 10px;
+        }
+        .btn {
+            padding: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnComprobar").click(()=>{
+                var nombrePersona = $("#nombre").val();
+                var tipoLetra = $("#tipoLetra").val();
+    
+                $.get("ejemplo1.php", {nombre:nombrePersona, letra:tipoLetra},
+                    function (data) {
+                        $("#respuestaServer").val(data);
+                        console.log(data);
+                    });
+            });
+        });
+        
+    </script>
+</head>
+
+<body>
+    <h1>Ejemplo $get jquery</h1>
+    <div class="contenedor">
+        <div class="select1">
+            <select name="nombre" id="nombre">
+                <option>kelvin</option>
+                <option>jesus</option>
+            </select>
+        </div>
+        <div class="select2">
+            <select name="tipoLetra" id="tipoLetra">
+                <option>consonante</option>
+                <option>vocal</option>
+            </select>
+        </div>
+        <div class="respuesta">
+            <input type="text" name="respuestainput" id="respuestaServer">
+        </div>
+        <div class="btn">
+            <button type="button" id="btnComprobar">Comprobar</button>
+        </div>
+    </div>
+</body>
+
+</html>
