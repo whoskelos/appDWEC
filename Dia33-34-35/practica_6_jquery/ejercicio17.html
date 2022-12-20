@@ -1,0 +1,33 @@
+<!-- EJERCICIO 17:  Crea una función que añada a la capa con identificador “interior” una copia del párrafo de clase “parraforojo”. -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17</title>
+    <script src="./jquery-ui/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".parraforojo").clone().appendTo("#”interior”");
+        });
+    </script>
+</head>
+
+<body>
+    <p class="parraforojo">
+        <i>Hola</i> <b>esto</b> es un <b>párrafo</b> rojo <i>donde</i> he <b>puesto</b> unas <b>negritas</b>
+    </p>
+    <p class="parraforojo">Otro <b>con</b> clase class="parraforojo" <span class="unspan"><b>(esto está dentro de unspan
+                B, no depende directamente -no child- del párrafo)</b></span></p>
+    <p>Hola <b>esto</b> es otro <b>párrafo </b>para <i>poner</i> otras <b>negritas</b></p>
+    <p>hola!!!</p>
+    <div id=”exterior”>
+        <div id=”interior”>
+        </div>
+    </div>
+
+</body>
+
+</html>

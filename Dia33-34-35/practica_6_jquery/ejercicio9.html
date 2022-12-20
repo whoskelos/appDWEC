@@ -10,9 +10,13 @@
     <script src="jquery-ui/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            
+            pintarLis();
         });
-        $("#div > li:nth-child")
+        
+        function pintarLis(){
+            $("#selected-plays > li:contains(Henry)").css("text-decoration","underline");
+
+        }
     </script>
 </head>
 

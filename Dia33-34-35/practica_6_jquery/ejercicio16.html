@@ -1,0 +1,27 @@
+<!-- EJERCICIO 16: Utilizando sólo jquery crea una capa con 300  imágenes iguales dentro y una lista desplegable de 50 elementos con el texto OPCIONX siendo X el número de opción. Añade dicha capa al body -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 16</title>
+    <script src="./jquery-ui/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("<div id='central'></div>").appendTo("body");
+        $("#central").append("<select id='selTest'></select>");
+        for (let i = 1; i <= 300; i++) {
+            $("#central").append(`<img id='img${i}' src='https://cdn-icons-png.flaticon.com/512/4529/4529975.png' width=100 />`)
+        }
+        for (let i = 1; i <= 50; i++) {
+            $(`<option>Opcion ${i}</option>`).appendTo("#selTest");
+        }
+        
+    });        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

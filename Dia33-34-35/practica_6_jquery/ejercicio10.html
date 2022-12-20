@@ -1,0 +1,38 @@
+<!-- EJERCICIO 10:  Dado el siguiente código muestra el contenido del segundo párrafo que este dentro de una capa de la clase horizontal. -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+    <script src="./jquery-ui/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".horizontal p:eq(1)").css("background-color","yellow");
+            console.log($(".horizontal p:eq(1)").text());
+            //EJERCICIO 12:  Dado el código del ejercicio 10 crea una función que muestre el tamaño de letra del párrafo 2
+            console.log("size de la fuente:",$(".horizontal p:eq(1)").css("font-size"));
+            //EJERCICIO 13:  Dado el código del ejercicio 10 crea una función que modifique el estilo del párrafo 1 para que tenga color de letra rojo,  tamaño de letra 12px y color de fondo azul.
+            $(".horizontal p:eq(0)").css({"color":"red","font-size":"12px","background-color":"blue"});
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>DEMO:</h1>
+    <div class="horizontal">
+        <p>PARRAFO 1:Este parrafo está dentro de <code>div</code> con la clase "horizontal".</p>
+    </div>
+    <div class="horizontal">
+        <p>PARRAFO 2:Este parrafo está dentro de <code>div</code> con la clase "horizontal".</p>
+    </div>
+    <div class="horizontal">
+        <p>PARRAFO 3:Este parrafo está dentro de <code>div</code> con la clase "horizontal".</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script src="../jquery-ui/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            for (let i = 1; i <= 20; i++) {
+                $(".botones").append(`<button type="button" id="boton${i}">Boton ${i}</button>`);
+            }
+            //pares rojos
+            $("div:even").css("border","3px solid red");
+            //impares azules
+            $("div:odd").css("border","3px solid blue");
+            $("#boton1").click(ocultarImages);
+            $("#boton2").click(ocultarImagesPares);
+            $("#boton3").click(btn3);
+            $(".caja-5 p").dblclick((e)=>{
+                $(e.currentTarget).css("background-color","red");
+            });
+            $("#boton5").click(btn5);
+            $("#boton4").click(btn4);
+            $("#boton6").click(btn6);
+            $("#boton7").click((e)=>{
+                $(e.currentTarget).animate({
+                    left: '250px',
+                    width: '150px'
+                }),3000;
+            });
+            $("#boton8").click(()=>{
+                //jquery
+                $("body").append("<p>Hola mundo</p>");
+                //DOM JS
+                var parrafo = document.createElement("p");
+                parrafo.innerHTML = "<p>Hola mundo 2</p>";
+                document.body.appendChild(parrafo);
+                //HTML
+                document.body.innerHTML += `<p>Hola mundo 3<p/>`;
+            });
+            $("#boton9").click(()=>{
+                $("div:odd").remove();
+            });
+            $("#boton10").click(()=>{
+                $(".caja-1").addClass("claseNueva");
+                $(".caja-2").removeClass("caja-2");
+                $(".caja-3").removeClass("caja-3").addClass("claseNueva");
+            });
+            $("#boton11").click(()=>{
+                $(":animated").css("background-color","yellow");
+            });
+
+            $("#boton12").click(()=>{
+                $("#boton1").off("click");
+            });
+            $("#boton13").click(()=>{
+                $("button").off("click");
+            });
+
+            $();
+        });
+
+        function ocultarImages(){
+            $("img").hide();
+        }
+        function ocultarImagesPares() {
+            $("div:even img").hide();
+        }
+        function btn3() {
+            $(".caja-1 select option, .caja-10 select option").css("text-decoration","underline");
+        }
+        function btn5() {
+            $(".caja-3, .caja-4").fadeOut(5000);
+        }
+        function btn4() {
+            $(".caja-3, .caja-4").fadeIn(5000);
+        }
+        function btn6(){
+            $(".caja-8").fadeTo(3000,0.15);
+            $(".caja-9").fadeTo(3000,0.4);
+            $(".caja-10").fadeTo(3000,0.7);
+        }
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .botones button {
+            position: relative;
+            padding: 8px;
+            margin: 8px;
+            font-weight: bold;
+        }
+        .claseNueva {
+            border: 3px solid green !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="botones"></div>
+    <div class="caja-1">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+    </div>
+    <div class="caja-2">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-3">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-4">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-5">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-6">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-7">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-8">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-9">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="caja-10">
+        <p>Hola</p>
+        <p>Hola</p>
+        <p>Hola</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564576.png" width="100" alt="" srcset="">
+        <button id="btn">Boton</button>
+        <button>boton</button>
+        <button>boton</button>
+        <select name="listaOpciones" id="lista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <table id="tabla" border="1">
+        <tr>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>HOLA</td>
+        </tr>
+    </table>
+</body>
+</html>

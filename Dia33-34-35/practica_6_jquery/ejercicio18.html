@@ -1,0 +1,31 @@
+<!-- EJERCICIO 18: Dado el siguiente código HTML crea una función que borre el elemento con identificador “item2” y una función que borre el contenedor (padre) del elemento con identificador “item1” -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery</title>
+    <script src="./jquery-ui/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#item2").remove();
+            $("#item1").offsetParent().remove();
+        });
+    </script>
+    <style>
+        .item {
+            font-size: 2em;
+            font-weight: bold;
+            color: rgb(92, 76, 238);
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="lista">
+        <li id="item1" class="item"> Item 1 </li>
+        <li id="item2" class="item"> Item 2 </li>
+        <li id="item3" class="item"> Item 3 </li>
+    </ul>
+</body>
+
+</html>
