@@ -13,100 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.6.2.min.js"
         integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/78a201790e.js" crossorigin="anonymous"></script>
-    <script>
-        var libros = [];
-        $(document).ready(function () {
-            $divPrincipal = $("#principal");
-            cargarLibros();
-            $(".btn-add").click(divNuevoEmpleado);
-        });
-
-        function cargarLibros() {
-            $.get("listar.php", {}, (respuesta) => {
-                libros = JSON.parse(respuesta);
-                pintarLibros(libros);
-            });
-        }
-
-        function pintarLibros(lista) {
-            let tabla = $("#tabla");
-            tabla.html(`<thead class="bg-dark text-white">
-                <tr>
-                    <th scope="col">Identificador</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">apellido</th>
-                    <th scope="col">Web</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>`);
-            $.each(lista, function (index_libro, libro) {
-                tabla.append(`<tbody>
-                    <tr>
-                        <td>${libro.identificador}</td>
-                        <td>${libro.nombre}</td>
-                        <td>${libro.apellido}</td>
-                        <td>${libro.web}</td>
-                        <td>
-                            <a class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                            <a class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></<a>
-                        </td>
-                    </tr>
-                </tbody>`);
-            });
-        }
-        function divNuevoEmpleado() {
-            if ($("#formNuevoEmpleado")) {
-                $("#formNuevoEmpleado").remove();
-            }
-            $(`<div class="col" id="formNuevoEmpleado">
-                    <form>
-                        <div class="mb-3">
-                            <label for="txtNombre" class="form-label">Nombre empleado</label>
-                            <input type="text" class="form-control" id="txtNombre" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtApellidos" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="txtApellidos">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtWeb" class="form-label">Web</label>
-                            <input type="text" class="form-control" id="txtWeb">
-                        </div>
-                        <button type="button" class="btn btn-success mb-3" id="btn-registrar">Registrar</button>
-                    </form>
-                </div>`).appendTo(".row:eq(1)");
-                $("#btn-registrar").click(()=>{
-                let nombreEmp = $("#txtNombre");
-                let apellidosEmp = $("#txtApellidos");
-                let webEmp = $("#txtWeb");
-                registrarEmpleado(nombreEmp,apellidosEmp,webEmp);
-            });
-        }
-        function registrarEmpleado(nom,ape,webDir) {
-            let errores = [];
-            if (nom.val() == "") {
-                nom.css("border","1px solid red");
-                errores.push("Campo nombre vacío");
-            }
-            if (ape.val() == "") {
-                ape.css("border","1px solid red");
-                errores.push("Campo apellidos vacío");
-            }
-            if (webDir.val() == "") {
-                webDir.css("border","1px solid red");
-                errores.push("Campo web vacío");
-            }
-            if (errores.length < 0) {
-                // $.post("registrar-empleado.php", {nombre: nom},(data,status,xhr)=>{
-                //     console.log(status);
-                // });
-            } else {
-                errores.forEach(error => {
-                    $(`<div class="alert alert-danger mb-3">${error}</div>`).appendTo("#formNuevoEmpleado");
-                });
-            }
-        }
-    </script>
 
 </head>
 
@@ -116,10 +22,7 @@
         <div class="container">
             <div class="row p-3 flex-column">
                 <div class="col">
-                    <h1 class="text-center">Lista de empleados</h1>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-primary btn-add">Nuevo empleado</button>
+                    <h1 class="text-center">Crud Empleados</h1>
                 </div>
             </div>
         </div>
@@ -127,8 +30,31 @@
     <main>
         <div class="container">
             <div class="row p-3">
-                <div class="col" id="principal">
-                    <table class="table" id="tabla"></table>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="emp-form">
+                                <input type="hidden" id="empId">
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="txtApellidos" placeholder="Apellidos">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="txtWeb" placeholder="www.example.com">
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="submit" id="btn-add">Registrar empleado</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6" id="principal">
+                    <table class="table table-small" id="tabla"></table>
                 </div>
             </div>
         </div>
@@ -144,6 +70,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
