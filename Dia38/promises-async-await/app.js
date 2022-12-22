@@ -1,5 +1,9 @@
+var editar = false;
 listarLibros();
 function listarLibros() {
+    $("#btn-alta").html("Dar de alta");
+    $("#btn-alta").removeClass("btn-success").addClass("btn-primary");
+    editar = false;
     let template = "";
     fetch("listar_libros.php", {
         method: "POST",
@@ -14,7 +18,7 @@ function listarLibros() {
                         <td>${libro.libro_fecha}</td>
                         <td>
                             <button class="btn btn-outline-danger btn-sm btn-eliminar" id="${libro.libro_isbn}"><i class="fa fa-solid fa-trash"></i></button>
-                            <button class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-outline-warning btn-sm btn-editar" id="${libro.libro_isbn}"><i class="fa-solid fa-pen-to-square"></i></button>
                         </td>
                     <tr>`;
             });
@@ -57,9 +61,31 @@ function eliminar(libro) {
         }
     });
 }
+editar_libro();
+function editar_libro(){
+    $(document).on("click",".btn-editar", (e) => {
+        $("#btn-alta").html("Guardar cambios");
+        $("#btn-alta").removeClass("btn-primary").addClass("btn-success");
+        const isbn = e.currentTarget.id;
+        fetch("getLibro.php",{
+            method: 'POST',
+            body: isbn
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                $("#isbn").val(response.libro_isbn);
+                $("#titulo").val(response.libro_titulo);
+                $("#autor").val(response.libro_autor);
+                $("#fecha").val(response.libro_fecha);
+                editar = true;
+            });
+    });
+}
 
 document.getElementById("btn-alta").addEventListener("click", () => {
-    fetch("registrar_libro.php", {
+    let url = editar === false ? "registrar_libro.php" : "editar_libro.php";
+    let titleText = editar === false ? "Libro registrado correctamente" : "Modificacion realizada correctamente";
+    fetch(url, {
         method: "POST",
         body: new FormData(formulario),
     })
@@ -68,7 +94,7 @@ document.getElementById("btn-alta").addEventListener("click", () => {
             if (response == "ok") {
                 Swal.fire({
                     icon: "success",
-                    title: "Libro registrado",
+                    title: titleText,
                     showConfirmButton: false,
                     timer: 1500,
                 });
