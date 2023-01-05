@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Ejercicio 4</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <script>
+        onload = () => {
+            getDatos();
+        }
+        const getDatos = () => {
+            fetch("ejercicio4.php")
+                .then(response => response.text())
+                .then(data => pintarTabla(data));
+        }
+
+        const pintarTabla = (datos) => {
+            //selecciono el div donde va a ir la tabla
+            $("#central").append(`
+                <table class="table table-dark table-sm">
+                    <thead>
+                        <th>ID</th>
+                        <th>Puesto</th>
+                        <th>Nombre</th>
+                        <th>Nacionalidad</th>
+                        <th>Puntos</th>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>`);
+            listaParticipantes = datos.split(";");
+            for (let i = 0; i < listaParticipantes.length; i++) {
+                const participante = listaParticipantes[i].split("-");
+                const fila = document.createElement("tr");
+                $("#tbody").append(fila);
+                for (let j = 0; j < participante.length; j++) {
+                    const dato = participante[j];
+                    const celda = document.createElement("td");
+                    fila.append(celda);
+                    celda.append(dato);
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+  <header>
+    <div class="container p-3">
+        <div class="row">
+            <div class="col">
+                <h1>Ejercicio 4</h1>
+            </div>
+        </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+        <div class="row">
+            <div class="col" id="central">
+                
+            </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

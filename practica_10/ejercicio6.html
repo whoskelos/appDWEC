@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Ejercicio 6</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <script>
+        onload = () => {
+            getDatos();
+        }
+        const getDatos = () => {
+            fetch("ejercicio6.php")
+                .then(response => response.json())
+                .then(data => pintarTabla(data));
+        }
+
+        const pintarTabla = (datos) => {
+            //selecciono el div donde va a ir la tabla
+            $("#central").append(`
+                <table class="table table-dark table-sm">
+                    <thead>
+                        <th>Puesto</th>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                        <th>Nacionalidad</th>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>`);
+            
+            datos.forEach(jugador => {
+                $("#tbody").append(`
+                    <tr>
+                        <td>${jugador.jugador_puesto}</td>
+                        <td><a class="link-info" onclick="cargarDatos(${jugador.jugador_id})">${jugador.jugador_nombre}</a></td>
+                        <td>${jugador.jugador_puntos}</td>
+                        <td>${jugador.jugador_nacionalidad}</td>
+                    </tr>`);
+            });
+
+        }
+
+        const cargarDatos = (id) => {
+            const jugadorId = {identificador : id};
+            $.post("ejercicio7.php", jugadorId,(response) => {
+                console.log(response);
+                const jugador = JSON.parse(response);
+                if ($("#infoJugador")) {
+                    $("#infoJugador").remove();
+                }
+                $(`<div class="card" id="infoJugador" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${jugador.jugador_nombre}</h5>
+                            <p class="card-text">
+                                <ul>
+                                    <li><span class="fw-bold">Nacionalidad:</span> ${jugador.jugador_nacionalidad}</li>
+                                    <li><span class="fw-bold">Puntuación:</span> ${jugador.jugador_puntos}</li>
+                                    <li><span class="fw-bold">Puntuación:</span> ${jugador.jugador_puesto}</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>`).appendTo(".col:eq(1)");
+                });
+        }
+    </script>
+</head>
+
+<body>
+  <header>
+    <div class="container p-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Ejercicio 6</h1>
+            </div>
+        </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+        <div class="row">
+            <div class="col" id="central">
+                
+            </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
